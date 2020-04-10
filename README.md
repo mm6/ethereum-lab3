@@ -19,8 +19,9 @@ browser.
 2) We will be using the Remix IDE to compile Solidity source code. We will also
 use Remix to deploy byte code to the Ethereum Virtual Machine (EVM) running on Ganache. Using Remix and MetaMask, we will interact with the contract using JSON-RPC. Remix runs in your browser. You don't need to install it. See: https://remix.ethereum.org/
 Run Remix in the same browser where you installed your MetaMask wallet. The wallet was installed in Lab 1.
-
-3) In Remix, create a Solidity file and name it "Lab3PartA.sol". [Paste the code at this link](../../blob/master/Lab3PartA/Lab3PartA.sol) into Lab3PartA.sol and click on "Select new compiler version" dropdown and select "0.4.18+commit". The contract should compile successfully and you may
+
+
+3) In Remix, create a Solidity file and name it "Lab3PartA.sol". [Paste the code at this link](../../blob/master/PartA/Lab3PartA.sol) into Lab3PartA.sol and click on "Select new compiler version" dropdown and select "0.4.18+commit". The contract should compile successfully and you may
 ignore the warnings. Select your provider as "Web3 Provider" and connect to Ganache on port 7545. You will deploy the contract soon.
 
 4) Click on the MetaMask plugin in your Chrome browser. There is a circle icon on the top right that is the "Accounts" icon. Click this icon and open "Settings". Set "Advanced Gas Controls" to "ON". Also, set "Show Conversion on Testnets" to "ON".
