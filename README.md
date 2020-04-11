@@ -157,11 +157,14 @@ what the value of "from:"" refers to and what the value of "to:"" refers to.
 :checkered_flag:**Copy the question 8 receipt and paste it into your submission file.
 Do the same with your answer to question 9.**
 
-10. The above operation returns the transaction ID, transaction receipt, and the event logs. It also includes enough information for the blockchain client to derive the public key and the address of the external account. The logsBloom may be used by a client to check if any particular event was generated during the contract's execution.
+10. The above operation returns the transaction ID, transaction receipt, and the event logs. It also includes enough information for the blockchain client to derive the public key and the address of the external account.  
 
-11. Note that we can make a copy (without the single quotes) of the transaction ID (also called the transaction hash). Our debugging efforts will concentrate on particular transactions and this hash will identify the transaction that we wish to debug.
+  The logsBloom may be used by a client to check if any particular event was generated during the contract's execution.
 
-12. Make another call to the get function to verify that the value has been saved in the contract's storage.
+
+11. Note that we can make a copy (without the single quotes) of the transaction ID (also called the transaction hash). Our debugging efforts will concentratee on particular transactions and this hash will identify the transaction that we wish to debug.
+
+12. Make another call to the get function to verify that the value has been saved in the contract's storage.
 
 ```
 truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.get.call();}).then(function(value){return value.toNumber()});
@@ -173,7 +176,7 @@ The output should be:
 4
 ```
 
-13. Let's introduce an error. Modify the set method to include an infinite loop:
+13. Let's introduce an error. Modify the set method to include an infinite loop:
 
 ```
       function set(uint x) public {
@@ -184,21 +187,21 @@ The output should be:
 
 ```
 
-14. Within the development console, compile and migrate the new contract:
+14. Within the development console, compile and migrate the new contract:
 
 ```
 truffle(develop)>migrate --reset
 ```
 
-15. Within the development console, execute the contract's new set method:
+15. Within the development console, execute the contract's new set method:
 
 ```
       truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(4);});
 ```
 
-We get an error. We are out of gas. We have executed too many operations.Note that we have no transaction receipt to examine. We need to see the server side logs.
+We get an error. We are out of gas. We have executed too many operations. Note that we have no transaction receipt to examine. We need to see the server side logs.
 
-In a new shell, visit the directory 'debugging-exercise', execute the following command:
+In a new shell, visit the directory 'debugging-exercise', execute the following command:
 
 ```
 truffle develop --log
@@ -213,16 +216,16 @@ Connected to existing Truffle Develop session at http://127.0.0.1:9545/
 
 ```
 truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(4);});
-```
-Note that we now have access to the transaction ID in the logs. Make a copy of the transaction hash.
+```  
+Note that we now have access to the transaction ID in the logs. Make a copy of the transaction hash.
 
 17. From within the truffle development environment, execute the debugger:
 
 ```
 truffle(develop)>debug <transaction hash>
 ```
-18. A list of commands is presented. By simply hitting the enter key you can step through the code associated with this particular transaction.
-By entering the 'h' command you can view the list of available commands. The 'v' command allows you to see the list of variables and their values. By carefully stepping through the code, we can debug the contract. Take some time and step through the code. The infinite loop becomes apparent.
+18. A list of commands is presented. By simply hitting the enter key you can step through the code associated with this particular transaction.  
+By entering the 'h' command you can view the list of available commands. The 'v' command allows you to see the list of variables and their values. By carefully stepping through the code, we can debug the contract. Take some time and step through the code. The infinite loop becomes apparent.
 
 19. Exit the debug session with the 'q' command.
 
@@ -233,7 +236,8 @@ function set(uint x) public {
     myVariable = x;
 }
 ```
-If the expression in the assert statement is false, an exception is thrown. In this case, we are only permitted to set 'myVariable' to 0. Anything else will cause an exception.
+
+If the expression in the assert statement is false, an exception is thrown. In this case, we are only permitted to set 'myVariable' to 0. Anything else will cause an exception.
 
 21. Within the development environment, compile and deploy with
 ```
