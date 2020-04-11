@@ -8,21 +8,13 @@ debugger.
 
 ##### Part A Set Up
 
-1. In Lab 1, you installed Ganache and you will be using it again here.
-Run Ganache Quickstart and leave it running for the remainder of Part A.
-This is, essentially, a client server application. Ganache is
-the server and is used to hold a single instance blockchain. We
-will visit the server with two clients - the Remix application
-running in a browser and a MetaMask wallet, also running in a
-browser.
+1. In Lab 1, you installed Ganache and you will be using it again here. Run Ganache Quickstart and leave it running for the remainder of Part A. This is, essentially, a client server application. Ganache is the server and is used to hold a single instance blockchain. We will visit the server with two clients - the Remix application running in a browser and a MetaMask wallet, also running in a browser.
 
-2. We will be using the Remix IDE to compile Solidity source code. We will also
-use Remix to deploy byte code to the Ethereum Virtual Machine (EVM) running on Ganache. Using Remix and MetaMask, we will interact with the contract using JSON-RPC. Remix runs in your browser. You don't need to install it. See: https://remix.ethereum.org/
+2. We will be using the Remix IDE to compile Solidity source code. We will also use Remix to deploy byte code to the Ethereum Virtual Machine (EVM) running on Ganache. Using Remix and MetaMask, we will interact with the contract using JSON-RPC. Remix runs in your browser. You don't need to install it. See: https://remix.ethereum.org/  
 Run Remix in the same browser where you installed your MetaMask wallet. The wallet was installed in Lab 1.
 
 
-3. In Remix, create a Solidity file and name it "Lab3PartA.sol". [Paste the code at this link](../../blob/master/PartA/Lab3PartA.sol) into Lab3PartA.sol and click on "Select new compiler version" dropdown and select "0.4.18+commit". The contract should compile successfully and you may
-ignore the warnings. Select your provider as "Web3 Provider" and connect to Ganache on port 7545. You will deploy the contract soon.
+3. In Remix, create a Solidity file and name it "Lab3PartA.sol". [Paste the code at this link](../../blob/master/PartA/Lab3PartA.sol) into Lab3PartA.sol and click on "Select new compiler version" dropdown and select "0.4.18+commit". The contract should compile successfully and you may ignore the warnings. Select your provider as "Web3 Provider" and connect to Ganache on port 7545. You will deploy the contract soon.
 
 4. Click on the MetaMask plugin in your Chrome browser. There is a circle icon on the top right that is the "Accounts" icon. Click this icon and open "Settings". Set "Advanced Gas Controls" to "ON". Also, set "Show Conversion on Testnets" to "ON".
 
@@ -260,9 +252,9 @@ truffle(develop)>SimpleStorage.deployed().then(function(instance){return instanc
 truffle(develop)>debug <transaction hash>
 ```
 
-25. Step through the code and view the values of the two variables 'myVariable' and 'x'. The transaction will halt with a runtime error just after evaluating the assert statement. Use 'q' to stop debugging this transaction.
+25. Step through the code and view the values of the two variables 'myVariable' and 'x'. The transaction will halt with a runtime error just after evaluating the assert statement. Use 'q' to stop debugging this transaction.
 
-26. Modify your contract so that it contains two events and a new set method:
+26. Modify your contract so that it contains two events and a new set method:
 
 ```
 // declare an Odd event
@@ -288,15 +280,15 @@ truffle(develop)> migrate --reset
 ```
 truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(4);});
 ```
-29. Notice that the logsBloom has changed and the receipt shows "Odd" rather than "Even".
+29. Notice that the logsBloom has changed and the receipt shows "Odd" rather than "Even".
 
 :checkered_flag:**Copy your receipt freom question 28 and paste it into your submission file:**
 
-30. To debug this transaction, copy the transaction hash and execute the debug command.
+30. To debug this transaction, copy the transaction hash and execute the debug command.
 ```
 truffle(develop)> debug <transaction hash>
 ```
-31. Use 'n' and 'v' to step through the transaction and view variables. You can see that the Odd event is generated when it should be Even.
+31. Use 'n' and 'v' to step through the transaction and view variables. You can see that the Odd event is generated when it should be Even.
 
 :checkered_flag:**To receive credit for Part B, submit a document named Lab3PartB.doc or Lab3PartB.pdf containing the question 8 receipt and the answer to question 9, the question 22 receipt, and the question 28 receipt.**
 
