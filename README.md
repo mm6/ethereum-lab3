@@ -1,16 +1,14 @@
 # Developing Blockchain Use Cases                Lab 3
 Due: 11:59:59 Wednesday, April 29, 2020        10 Points
 
-**Learning Objectives:** The object of Part A is to introduce the student to
-the MetaMask wallet and crowdsale contracts. The objective of Part B is
-to introduce the student to debugging smart contracts using the truffle
-debugger.
+**Learning Objectives:** The object of Part A is to introduce the student to the MetaMask wallet and crowdsale contracts. The objective of Part B is to introduce the student to debugging smart contracts using the truffle debugger.
 
 ##### Part A Set Up
 
 1. In Lab 1, you installed Ganache and you will be using it again here. Run Ganache Quickstart and leave it running for the remainder of Part A. This is, essentially, a client server application. Ganache is the server and is used to hold a single instance blockchain. We will visit the server with two clients - the Remix application running in a browser and a MetaMask wallet, also running in a browser.
 
-2. We will be using the Remix IDE to compile Solidity source code. We will also use Remix to deploy byte code to the Ethereum Virtual Machine (EVM) running on Ganache. Using Remix and MetaMask, we will interact with the contract using JSON-RPC. Remix runs in your browser. You don't need to install it. See: https://remix.ethereum.org/  
+2. We will be using the Remix IDE to compile Solidity source code. We will also use Remix to deploy byte code to the Ethereum Virtual Machine (EVM) running on Ganache. Using Remix and MetaMask, we will interact with the contract using JSON-RPC. Remix runs in your browser. You don't need to install it.   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;See: https://remix.ethereum.org/  
 Run Remix in the same browser where you installed your MetaMask wallet. The wallet was installed in Lab 1.
 
 
