@@ -1,5 +1,11 @@
-# Developing Blockchain Use Cases                Lab 3
-Due: 11:59:59 Wednesday, April 29, 2020        10 Points
+## Spring 2020 Developing Blockchain Use Cases Lab 3                             
+### Carnegie Mellon University                  
+### Due: 11:59 PM, Wednesday, April 29, 2020                                
+### 10 Points
+### Lab Assistance provided by Michael McCarthy
+### Email: mm6@andrew.cmu.edu
+### Zoom URL: Please see Canvas and look under "Pages".
+
 
 **Learning Objectives:** The object of Part A is to introduce the student to the MetaMask wallet and crowdsale contracts. The objective of Part B is to introduce the student to debugging smart contracts using the truffle debugger.
 
