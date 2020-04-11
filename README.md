@@ -297,7 +297,7 @@ truffle(develop)> debug <transaction hash>
 :checkered_flag:**To receive credit for Part B, submit a document named Lab3PartB.doc or Lab3PartB.pdf containing the question 8 receipt and the answer to question 9, the question 22 receipt, and the question 28 receipt.**
 
 
-:checkered_flag:**Place your two submission documents (Lab3PartA.doc or Lab3PartA.pdf and Lab3PartB.doc or Lab3PartB.pdf) into a single directory and zip that directory. Name the zip file YourAndrewIDLab3.zip. Submit this single zip file to Canvas.**
+:checkered_flag:**Place your two submission documents (Lab3PartA.doc or Lab3PartA.pdf and Lab3PartB.doc or Lab3PartB.pdf) into a single directory and zip that directory. Name the zip file \<YourAndrewID\>Lab3.zip. Submit this single zip file to Canvas.**
 
 ##### Grading rubric for the materials in the submission directory
 
