@@ -44,7 +44,7 @@ your wallet. Do this for each account with "My Accounts/Settings/Advanced/Reset 
 
 Note: If a transaction does not complete successfully, do not give up. Try it again
 with a higher gas price (say 8 GWEI) or a higher gas limit. You may have to play
-with MetaMask a bit to get it to cooperate. You may want to reset the account as show
+with MetaMask a bit to get it to cooperate. You may want to reset the account as described
 in the previous note.
 
 ##### Part A Problems
