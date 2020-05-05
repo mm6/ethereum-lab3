@@ -286,7 +286,7 @@ truffle(develop)>SimpleStorage.deployed().then(function(instance){return instanc
 ```
 29. Notice that the logsBloom has changed and the receipt shows "Odd" rather than "Even".
 
-:checkered_flag:**Copy your receipt freom question 28 and paste it into your submission file:**
+:checkered_flag:**Copy your receipt from question 28 and paste it into your submission file:**
 
 30. To debug this transaction, copy the transaction hash and execute the debug command.
 ```
