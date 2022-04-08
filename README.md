@@ -1,9 +1,12 @@
 ## Spring 2020 Developing Blockchain Use Cases Lab 3                             
 ### Carnegie Mellon University                  
-### Due: 11:59 PM, Wednesday, April 29, 2020                                
+### Due: 11:59 PM, Monday, April 25, 2022                                
 ### 10 Points
-### Lab Assistance provided by Michael McCarthy
-### Email: mm6@andrew.cmu.edu
+
+### Lab Assistance provided by Michael McCarthy and Abhraneil Chandra
+### McCarthy Email: mm6@andrew.cmu.edu
+### Chandra Email: abhranec@andrew.cmu.edu
+
 ### Zoom URL: Please see Canvas and look under "Pages".
 
 
