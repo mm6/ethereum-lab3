@@ -1,4 +1,4 @@
-## Spring 2020 Developing Blockchain Use Cases Lab 3                             
+## Spring 2022 Developing Blockchain Use Cases Lab 3                             
 ### Carnegie Mellon University                  
 ### Due: 11:59 PM, Monday, April 25, 2022                                
 ### 10 Points
