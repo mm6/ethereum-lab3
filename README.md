@@ -10,23 +10,40 @@
 ### Zoom URL: Please see Canvas and look under "Pages".
 
 
-**Learning Objectives:** The object of Part A is to introduce the student to the MetaMask wallet and crowdsale contracts. The objective of Part B is to introduce the student to debugging smart contracts using the truffle debugger.
+
+
+
+**Learning Objectives:** The object of Part A is to introduce the student to the MetaMask wallet and crowdsale contracts. The objective of Part B is to introduce the student to debugging smart contracts using the truffle debugger.
+
+
 
 ##### Part A Set Up
 
 1. In Lab 1, you installed Ganache and you will be using it again here. Run Ganache Quickstart and leave it running for the remainder of Part A. This is, essentially, a client server application. Ganache is the server and is used to hold a single instance blockchain. We will visit the server with two clients - the Remix application running in a browser and a MetaMask wallet, also running in a browser.
-
-2. We will be using the Remix IDE to compile Solidity source code. We will also use Remix to deploy byte code to the Ethereum Virtual Machine (EVM) running on Ganache. Using Remix and MetaMask, we will interact with the contract using JSON-RPC. Remix runs in your browser. You don't need to install it.   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;See: https://remix.ethereum.org/  
-Run Remix in the same browser where you installed your MetaMask wallet. The wallet was installed in Lab 1.
+
+
+
+2. We will be using the Remix IDE to compile Solidity source code. We will also use Remix to deploy byte code to the Ethereum Virtual Machine (EVM) running on Ganache. Using Remix and MetaMask, we will interact with the contract using JSON-RPC. Remix runs in your browser. You don't need to install it.
+
+
+   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;See: https://remix.ethereum.org/
+
+  
+Run Remix in the same browser where you installed your MetaMask wallet.
+
+ The wallet was installed in Lab 1.
+
+
 
 
 3. In Remix, create a Solidity file and name it "Lab3PartA.sol". [Paste the code at this link](../../blob/master/PartA/Lab3PartA.sol) into Lab3PartA.sol and click on "Select new compiler version" dropdown and select "0.4.18+commit". The contract should compile successfully and you may ignore the warnings. Select your provider as "Web3 Provider" and connect to Ganache on port 7545. You will deploy the contract soon.
 
-4. Click on the MetaMask plugin in your Chrome browser. There is a circle icon on the top right that is the "Accounts" icon. Click this icon and open "Settings". Set "Advanced Gas Controls" to "ON". Also, set "Show Conversion on Testnets" to "ON".
+4. Click on the MetaMask plugin in your Chrome browser. There is a circle icon on the top right that is the "Accounts" icon. Click this icon and open "Settings". Under "Advanced", set "Advanced Gas Controls" to "ON". Also, set "Show Conversion on Testnets" to "ON".
 
-Click on the network selection dropdown menu on the top right. Select "Custom RPC" and
-under "Network Name" enter Ganache and under "New RPC URL" enter http://127.0.0.1:7545 and then select "Save". You will now be able to import accounts from Ganache. Always ensure that you are working with the "Custom RPC" network and not any other networks in MetaMask.
+At this point, a new network needs to be added to metamask. Metamask ships with a default "Localhost 8545" network, but this is not compatible with Ganache out of the box. We need to delete this network and add it with the correct settings to get it to work. Under "Settings" > "Networks", click on "Localhost 8545" and then on "Delete". Confirm Deleting the Network by pressing the red button.
+
+Click on the Add a network button on the top right. Under "Network Name" enter Ganache, under "New RPC URL" enter http://127.0.0.1:7545, under "ChainID" enter 1337, and under Currency Symbol enter "ETH" and then select "Save". You will now be able to import accounts from Ganache. Always ensure that you are working with the "Custom RPC" network and not any other networks in MetaMask.
 
 To see an expanded view of your wallet, click on the "Account Options" ellipsis to the right of the account and click on "Expand View".
 
@@ -62,12 +79,12 @@ Note: You will be working with a crowdsale contract and steps 9 through 17 shoul
 
 12. At this point, take a screenshot of the 10 accounts on Ganache.
 
-13. Since the CMU Token contract implements the ERC 20 standard interface, the MetaMask wallet is able to automatically track CMU Tokens. In this step, we will inform the wallet that we are interested in tracking these tokens. In Remix, click on the "Copy value to clipboard" icon next to the contract address. This will be used to add the CMU Token to the MetaMask wallet. You might also take this address directly from Ganache. In MetaMask, expand the view of Alice's account and click on "Add Tokens" to add the CMU Token to her account. Click on "Custom Token" and paste the copied address in the "Token Contract Address" and click on "Next", and then click on "Add Tokens". You have now successfully added CMU Tokens to your Alice account. So that Bob, Charlie, and Donna can exchange tokens, repeat this process for the remaining accounts.
+13. Since the CMU Token contract implements the ERC 20 standard interface, the MetaMask wallet is able to automatically track CMU Tokens. In this step, we will inform the wallet that we are interested in tracking these tokens. In Remix, click on the "Copy value to clipboard" icon next to the contract address. This will be used to add the CMU Token to the MetaMask wallet. You might also take this address directly from Ganache. In MetaMask, expand the view of Alice's account and click on "Add Tokens" to add the CMU Token to her account. Click on "Custom Token" and paste the copied address in the "Token Contract Address" and click on "Add Custom Token", and then click on "Import Tokens". You have now successfully added CMU Tokens to your Alice account. So that Bob, Charlie, and Donna can exchange tokens, repeat this process for the remaining accounts.
 
  To repeat, the wallet is able to handle these tokens because the contract developer implemented the methods defined by a standard interface and the wallet developer was ably to rely on these methods being there.
 
 14. Each of our players (Alice, Bob, Charlie, and Donna) buys 5 ETH worth of CMUC from
-the contract. After the purchases, take a screenshot of each of these wallets (showing ETH and CMUC).
+the contract. After the purchases, take a screenshot of each of these wallets (showing ETH and CMUC). <This is done by sending 5 eth to the account. I don't believe this is clear, should we be adding this into the steps?>
 
 15. Alice sends 12 CMUC to Bob.
 
@@ -94,59 +111,106 @@ There are three distinct places in these directions where you need to
 paste a copy of your transaction receipt to a submission file named
 Lab3PartB.doc or Lab3PartB.pdf.
 
-1. Make a new directory named debugging-exercise and cd into it.
-2. Create a truffle directory structure:
-```
-   truffle init
-```
-3. Save the following file in the contracts directory and name it Store.sol.
+1. Make a new directory named debugging-exercise and cd into it.
+
+
+2. Create a truffle directory structure:
+
 
 ```
-   pragma solidity ^0.5.0;
-   contract SimpleStorage {
-       uint myVariable;
-       function set(uint x) public {
-          myVariable = x;
-       }
-       function get() view public returns (uint) {
-           return myVariable;
-       }
+   truffle init
+
+
+```
+3. Save the following file in the contracts directory and name it Store.sol.
+
+
+
+```
+   pragma solidity ^0.5.0;
+
+
+   contract SimpleStorage {
+
+
+       uint myVariable;
+
+
+       function set(uint x) public {
+
+          myVariable = x;
+
+       }
+
+
+       function get() view public returns (uint) {
+
+           return myVariable;
+
+       }
+
   }
 
 ```
 
-4. Save the following file in the migrations directory and name it 2_deploy_contracts.js.
+4. Save the following file in the migrations directory and name it
+ 2_deploy_contracts.js.
+
+
 
 ```
-     var SimpleStorage = artifacts.require("SimpleStorage");
-        module.exports = function(deployer) {
-          deployer.deploy(SimpleStorage);
+     var SimpleStorage = artifacts.require("SimpleStorage");
+
+
+        module.exports = function(deployer) {
+
+          deployer.deploy(SimpleStorage);
+
         };
 
 ```
 
-5. We would like to work with this SimpleStorage contract in development mode. Run the following command:
+5. We would like to work with this SimpleStorage contract in development mode. Run the following command:
+
+
 
 ```
-     truffle develop
+     truffle develop
+
+
 ```
 
 Note: When you want to exit truffle(develop), use "control-d".
 
-6. A development blockchain is provided for this work. Public and private keys are also provided. We need to compile and deploy the contract.
+6. A development blockchain is provided for this work. Public and private keys are also provided.
+ We need to compile and deploy the contract.
+
+
 
 ```
-     truffle(develop)>migrate --reset
-```
-
-7. Access the contract's get method with a call:
-```
-     truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.get.call();}).then(function(value){return value.toNumber()});
-```
-8. Access the contract's set method:
+     truffle(develop)>migrate --reset
 
 ```
-     truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(4);});
+
+
+7. Access the contract's get method with a call:
+
+
+```
+     truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.get.call();}).then(function(value){return value.toNumber()});
+
+
+```
+
+
+8. Access the contract's set method:
+
+
+
+```
+     truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(4);});
+
+
 ```
 
 9. Notice the "from:"" and "to:"" values in the receipt. In your own words, describe
@@ -161,139 +225,280 @@ Do the same with your answer to question 9.**
   The logsBloom may be used by a client to check if any particular event was generated during the contract's execution.
 
 
-11. Note that we can make a copy (without the single quotes) of the transaction ID (also called the transaction hash). Our debugging efforts will concentratee on particular transactions and this hash will identify the transaction that we wish to debug.
+11. Note that we can make a copy (without the single quotes) of the transaction ID (also called the transaction hash). Our debugging efforts will concentratee on particular transactions and this hash will identify the transaction that we wish to debug.
 
-12. Make another call to the get function to verify that the value has been saved in the contract's storage.
+
+
+
+
+12. Make another call to the get function to verify that the value has been saved in the contract's storage.
+
+
 
 ```
-truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.get.call();}).then(function(value){return value.toNumber()});
+truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.get.call();}).then(function(value){return value.toNumber()});
+
+
 
 ```
 
-The output should be:
+The output should be:
+
+
 ```
 4
 ```
 
-13. Let's introduce an error. Modify the set method to include an infinite loop:
+
+
+
+
+13. Let's introduce an error. Modify the set method to include an infinite loop:
+
+
 
 ```
-      function set(uint x) public {
-         while(true) {
-            myVariable = x;
+      function set(uint x) public {
+
+
+         while(true) {
+
+
+            myVariable = x;
+
+
          }
-      }
+      }
+
+
 
 ```
 
-14. Within the development console, compile and migrate the new contract:
+14. Within the development console, compile and migrate the new contract:
+
+
 
 ```
-truffle(develop)>migrate --reset
-```
+truffle(develop)>migrate --reset
 
-15. Within the development console, execute the contract's new set method:
 
 ```
-      truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(4);});
+
+15. Within the development console, execute the contract's new set method:
+
+
+
+```
+      truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(4);});
+
+
+
+
 ```
 
 We get an error. We are out of gas. We have executed too many operations. Note that we have no transaction receipt to examine. We need to see the server side logs.
 
-In a new shell, visit the directory 'debugging-exercise', execute the following command:
+In a new shell, visit the directory 'debugging-exercise', execute the following command:
+
+
+
+
 
 ```
-truffle develop --log
-```
-It should respond with:
+truffle develop --log
+
 
 ```
-Connected to existing Truffle Develop session at http://127.0.0.1:9545/
+It should respond with:
+
+
+
+```
+Connected to existing Truffle Develop session at http://127.0.0.1:9545/
+
+
 ```
 
-16. Return to the first console window and execute the new set method again.
+16. Return to the first console window and execute the new set method again.
+
+
 
 ```
-truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(4);});
+truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(4);});
+
+
 ```  
-Note that we now have access to the transaction ID in the logs. Make a copy of the transaction hash.
+Note that we now have access to the transaction ID in the logs. Make a copy of the transaction hash.
 
-17. From within the truffle development environment, execute the debugger:
+
+
+
+
+17. From within the truffle development environment, execute the debugger:
+
+
 
 ```
-truffle(develop)>debug <transaction hash>
+truffle(develop)>debug <transaction hash>
+
+
+
+
 ```
 18. A list of commands is presented. By simply hitting the enter key you can step through the code associated with this particular transaction.  
-By entering the 'h' command you can view the list of available commands. The 'v' command allows you to see the list of variables and their values. By carefully stepping through the code, we can debug the contract. Take some time and step through the code. The infinite loop becomes apparent.
+By entering the 'h' command you can view the list of available commands. The 'v' command allows you to see the list of variables and their values. By carefully stepping through the code, we can debug the contract. Take some time and step through the code.
 
-19. Exit the debug session with the 'q' command.
+ The infinite loop becomes apparent.
 
-20. In Store.sol, replace the set method with the following:
-```
-function set(uint x) public {
-    assert(x == 0);
-    myVariable = x;
-}
-```
 
-If the expression in the assert statement is false, an exception is thrown. In this case, we are only permitted to set 'myVariable' to 0. Anything else will cause an exception.
 
-21. Within the development environment, compile and deploy with
-```
-truffle(develop)> migrate --reset
-```
-22. Run the method with 0 so that the assert does not fail.
+
+
+19. Exit the debug session with the 'q' command.
+
+
+
+
+20. In Store.sol, replace the set method with the following:
+
 
 ```
-truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(0);});
+function set(uint x) public {
+
+
+    assert(x == 0);
+
+
+    myVariable = x;
+
+
+}
+
+
+```
+
+If the expression in the assert statement is false, an exception is thrown. In this case, we are only permitted to set 'myVariable' to 0. Anything else will cause an exception.
+
+
+
+
+
+21. Within the development environment, compile and deploy with
+
+
+```
+truffle(develop)> migrate --reset
+
+
+
+
+```
+22. Run the method with 0 so that the assert does not fail.
+
+
+
+```
+truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(0);});
+
+
 ```
 :checkered_flag:**Copy your receipt from question 22 and paste it into your submission file:**
 
-23. Run the method with 7 and force the assert statement to fail:
-```
-truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(7);});
-```
-24. Run the debugger. To debug the error, we need the transaction hash from the log window.
+23. Run the method with 7 and force the assert statement to fail:
+
 
 ```
-truffle(develop)>debug <transaction hash>
+truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(7);});
+
+
+```
+24. Run the debugger. To debug the error, we need the transaction hash from the log window.
+
+
+
+```
+truffle(develop)>debug <transaction hash>
+
+
 ```
 
 25. Step through the code and view the values of the two variables 'myVariable' and 'x'. The transaction will halt with a runtime error just after evaluating the assert statement. Use 'q' to stop debugging this transaction.
 
-26. Modify your contract so that it contains two events and a new set method:
+
+
+26. Modify your contract so that it contains two events and a new set method:
+
 
 ```
-// declare an Odd event
-event Odd();
-// declare an Even event
-event Even();
-function set(uint x) public {
-    myVariable = x;
-    if (x % 2 == 0) {
-        emit Odd();
-    } else {
-        emit Even();
-    }
+// declare an Odd event
+
+
+event Odd();
+
+
+// declare an Even event
+
+
+event Even();
+
+
+function set(uint x) public {
+
+
+    myVariable = x;
+
+
+    if (x % 2 == 0) {
+
+
+        emit Odd();
+
+
+    } else {
+
+
+        emit Even();
+
+
+    }
+
+
 }
 ```
 
-27. Compile and deploy your new contract.
+
+
+
+27. Compile and deploy your new contract.
+
+
 ```
-truffle(develop)> migrate --reset
+truffle(develop)> migrate --reset
+
+
 ```
 
-28. Send the even value 4 to the contract's set method.
+28. Send the even value 4 to the contract's set method.
+
+
 ```
-truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(4);});
+truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(4);});
+
+
 ```
-29. Notice that the logsBloom has changed and the receipt shows "Odd" rather than "Even".
+29. Notice that the logsBloom has changed and the receipt shows "Odd" rather than "Even".
+
+
 
 :checkered_flag:**Copy your receipt from question 28 and paste it into your submission file:**
 
-30. To debug this transaction, copy the transaction hash and execute the debug command.
+30. To debug this transaction, copy the transaction hash and execute the debug command.
+
+
 ```
-truffle(develop)> debug <transaction hash>
+truffle(develop)> debug <transaction hash>
+
+
 ```
 31. Use 'n' and 'v' to step through the transaction and view variables. You can see that the Odd event is generated when it should be Even.
 
