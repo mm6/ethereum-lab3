@@ -230,8 +230,7 @@ truffle(develop)>migrate --reset
 15. Within the development console, execute the contract's new set method:
 
 ```
-      truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(4);});
-
+truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(4);});
 ```
 
 We get an error. We are out of gas. We have executed too many operations. Note that we have no transaction receipt to examine. We need to see the server side logs.
