@@ -318,50 +318,25 @@ truffle(develop)>debug <transaction hash>
 
 ```
 // declare an Odd event
-
-
 event Odd();
 
-
 // declare an Even event
-
-
 event Even();
 
-
 function set(uint x) public {
-
-
     myVariable = x;
-
-
-    if (x % 2 == 0) {
-
-
+    if (x % 2 == 0) {  
         emit Odd();
-
-
     } else {
-
-
         emit Even();
-
-
     }
-
-
 }
 ```
-
-
-
 
 27. Compile and deploy your new contract.
 
 ```
 truffle(develop)> migrate --reset
-
-
 ```
 
 28. Send the even value 4 to the contract's set method.
@@ -369,21 +344,15 @@ truffle(develop)> migrate --reset
 
 ```
 truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(4);});
-
-
 ```
 29. Notice that the logsBloom has changed and the receipt shows "Odd" rather than "Even".
-
-
 
 :checkered_flag:**Copy your receipt from question 28 and paste it into your submission file:**
 
 30. To debug this transaction, copy the transaction hash and execute the debug command.
 
-
 ```
 truffle(develop)> debug <transaction hash>
-
 
 ```
 31. Use 'n' and 'v' to step through the transaction and view variables. You can see that the Odd event is generated when it should be Even.
