@@ -1,20 +1,15 @@
-## Spring 2022 Developing Blockchain Use Cases Lab 3                             
+## Spring 2023 Developing Blockchain Use Cases Lab 3                             
 ### Carnegie Mellon University                  
-### Due: 11:59 PM, Monday, April 25, 2022                                
+### Due: 11:59 PM, Monday, April 24, 2023                                
 ### 10 Points
 
-### Lab Assistance provided by Michael McCarthy and Abhraneil Chandra
-### McCarthy Email: mm6@andrew.cmu.edu
-### Chandra Email: abhranec@andrew.cmu.edu
-
-### Zoom URL: Please see Canvas and look under "Pages".
+### Lab Assistance provided by Michael McCarthy, Atharva Joshi, and Nikita Vignesh Kumar
+### See Office Hours on Canvas
 
 
 
 
-
-**Learning Objectives:** The object of Part A is to introduce the student to the MetaMask wallet and crowdsale contracts. The objective of Part B is to introduce the student to debugging smart contracts using the truffle debugger.
-
+**Learning Objectives:** The object of Part A is to introduce the student to the MetaMask wallet and crowdsale contracts. The objective of Part B is to introduce the student to debugging smart contracts using the truffle debugger. The objective of Part C is to experiment with the Algorand Testnet.
 
 
 ##### Part A Set Up
@@ -22,20 +17,13 @@
 1. In Lab 1, you installed Ganache and you will be using it again here. Run Ganache Quickstart and leave it running for the remainder of Part A. This is, essentially, a client server application. Ganache is the server and is used to hold a single instance blockchain. We will visit the server with two clients - the Remix application running in a browser and a MetaMask wallet, also running in a browser.
 
 
-
 2. We will be using the Remix IDE to compile Solidity source code. We will also use Remix to deploy byte code to the Ethereum Virtual Machine (EVM) running on Ganache. Using Remix and MetaMask, we will interact with the contract using JSON-RPC. Remix runs in your browser. You don't need to install it.
 
-
-   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;See: https://remix.ethereum.org/
 
-  
 Run Remix in the same browser where you installed your MetaMask wallet.
 
- The wallet was installed in Lab 1.
-
-
-
+The MetaMask wallet was installed in Lab 1.
 
 3. In Remix, create a Solidity file and name it "Lab3PartA.sol". [Paste the code at this link](../../blob/master/PartA/Lab3PartA.sol) into Lab3PartA.sol and click on "Select new compiler version" dropdown and select "0.4.18+commit". The contract should compile successfully and you may ignore the warnings. Select your provider as "Web3 Provider" and connect to Ganache on port 7545. You will deploy the contract soon.
 
@@ -113,18 +101,13 @@ Lab3PartB.doc or Lab3PartB.pdf.
 
 1. Make a new directory named debugging-exercise and cd into it.
 
-
 2. Create a truffle directory structure:
-
 
 ```
    truffle init
 
-
 ```
 3. Save the following file in the contracts directory and name it Store.sol.
-
-
 
 ```
    pragma solidity ^0.5.0;
@@ -172,12 +155,8 @@ Lab3PartB.doc or Lab3PartB.pdf.
 
 5. We would like to work with this SimpleStorage contract in development mode. Run the following command:
 
-
-
 ```
      truffle develop
-
-
 ```
 
 Note: When you want to exit truffle(develop), use "control-d".
@@ -185,31 +164,22 @@ Note: When you want to exit truffle(develop), use "control-d".
 6. A development blockchain is provided for this work. Public and private keys are also provided.
  We need to compile and deploy the contract.
 
-
-
 ```
      truffle(develop)>migrate --reset
-
 ```
 
-
 7. Access the contract's get method with a call:
-
 
 ```
      truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.get.call();}).then(function(value){return value.toNumber()});
 
-
 ```
-
 
 8. Access the contract's set method:
 
 
-
 ```
      truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(4);});
-
 
 ```
 
@@ -224,75 +194,43 @@ Do the same with your answer to question 9.**
 
   The logsBloom may be used by a client to check if any particular event was generated during the contract's execution.
 
-
-11. Note that we can make a copy (without the single quotes) of the transaction ID (also called the transaction hash). Our debugging efforts will concentratee on particular transactions and this hash will identify the transaction that we wish to debug.
-
-
-
-
+11. Note that we can make a copy (without the single quotes) of the transaction ID (also called the transaction hash). Our debugging efforts will concentrate on particular transactions and this hash will identify the transaction that we wish to debug.
 
 12. Make another call to the get function to verify that the value has been saved in the contract's storage.
 
-
-
 ```
 truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.get.call();}).then(function(value){return value.toNumber()});
-
-
 
 ```
 
 The output should be:
 
-
 ```
 4
 ```
 
-
-
-
-
 13. Let's introduce an error. Modify the set method to include an infinite loop:
-
-
 
 ```
       function set(uint x) public {
-
-
          while(true) {
-
-
             myVariable = x;
-
-
          }
       }
-
-
 
 ```
 
 14. Within the development console, compile and migrate the new contract:
 
-
-
 ```
 truffle(develop)>migrate --reset
-
 
 ```
 
 15. Within the development console, execute the contract's new set method:
 
-
-
 ```
       truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(4);});
-
-
-
 
 ```
 
@@ -301,48 +239,29 @@ We get an error. We are out of gas. We have executed too many operations. Note t
 In a new shell, visit the directory 'debugging-exercise', execute the following command:
 
 
-
-
-
 ```
 truffle develop --log
-
 
 ```
 It should respond with:
 
-
-
 ```
 Connected to existing Truffle Develop session at http://127.0.0.1:9545/
-
 
 ```
 
 16. Return to the first console window and execute the new set method again.
 
-
-
 ```
 truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(4);});
-
 
 ```  
 Note that we now have access to the transaction ID in the logs. Make a copy of the transaction hash.
 
-
-
-
-
 17. From within the truffle development environment, execute the debugger:
-
-
 
 ```
 truffle(develop)>debug <transaction hash>
-
-
-
 
 ```
 18. A list of commands is presented. By simply hitting the enter key you can step through the code associated with this particular transaction.  
@@ -350,28 +269,14 @@ By entering the 'h' command you can view the list of available commands. The 'v'
 
  The infinite loop becomes apparent.
 
-
-
-
-
 19. Exit the debug session with the 'q' command.
-
-
-
 
 20. In Store.sol, replace the set method with the following:
 
-
 ```
 function set(uint x) public {
-
-
     assert(x == 0);
-
-
     myVariable = x;
-
-
 }
 
 
@@ -380,54 +285,36 @@ function set(uint x) public {
 If the expression in the assert statement is false, an exception is thrown. In this case, we are only permitted to set 'myVariable' to 0. Anything else will cause an exception.
 
 
-
-
-
 21. Within the development environment, compile and deploy with
-
 
 ```
 truffle(develop)> migrate --reset
 
-
-
-
 ```
 22. Run the method with 0 so that the assert does not fail.
 
-
-
 ```
 truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(0);});
-
 
 ```
 :checkered_flag:**Copy your receipt from question 22 and paste it into your submission file:**
 
 23. Run the method with 7 and force the assert statement to fail:
 
-
 ```
 truffle(develop)>SimpleStorage.deployed().then(function(instance){return instance.set(7);});
-
 
 ```
 24. Run the debugger. To debug the error, we need the transaction hash from the log window.
 
-
-
 ```
 truffle(develop)>debug <transaction hash>
-
 
 ```
 
 25. Step through the code and view the values of the two variables 'myVariable' and 'x'. The transaction will halt with a runtime error just after evaluating the assert statement. Use 'q' to stop debugging this transaction.
 
-
-
 26. Modify your contract so that it contains two events and a new set method:
-
 
 ```
 // declare an Odd event
@@ -470,7 +357,6 @@ function set(uint x) public {
 
 
 27. Compile and deploy your new contract.
-
 
 ```
 truffle(develop)> migrate --reset
