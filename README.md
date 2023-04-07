@@ -352,11 +352,65 @@ truffle(develop)>SimpleStorage.deployed().then(function(instance){return instanc
 
 ```
 truffle(develop)> debug <transaction hash>
-
 ```
 31. Use 'n' and 'v' to step through the transaction and view variables. You can see that the Odd event is generated when it should be Even.
 
 :checkered_flag:**To receive credit for Part B, submit a document named Lab3PartB.doc or Lab3PartB.pdf containing the question 8 receipt and the answer to question 9, the question 22 receipt, and the question 28 receipt.**
+
+##### Part C Calling Algorand's Testnet API.
+
+Algorand is a Web3 blockchain that competes with Ethereum.
+
+To get started using Algorand, we need an Algorand wallet and an account.  
+
+0. Visit https://perawallet.app/ and launch Pera Web to visit https://web.perawallet.app/.
+1. Choose "Create an Account" and choose a password. This is stored on your local machine.
+2. Choose an account name. You might use your Andrew id. This too is stored on your local machine.
+3. Locate your recovery phrase. See "view pass phrase" after clicking the three horizontal dots on the Accounts page. Take a screen shot and save it locally on disk. A recovery phrase should never be shared. From the recovery phrase, your private key can be generated.
+4. Keep the recovery phrase in some place private. It is suggested that this phrase be stored on paper and off any computer. If you lose your recovery phrase, you lose your money. Do not include your recovery phrase on the PDF that you will submit.
+5. Change to the Algorand testnet by selecting "Settings" and then "Node Settings" and then "testnet". We are NOT using the mainnet. The mainnet Algos have real value. The testnet Algos have no value. But note that your private key (or recovery phrase) will work on both the mainnet and the testnet.
+6. Visit https://testnet.algoexplorer.io/dispenser to get funds for the testnet.
+7. Use your account address to get funds from the dispenser and be sure to save the transaction ID. You will need that ID later.
+8. You may be asked to prove that you are human.
+9. Algos will be dispensed to your account (that is, the transfer will be recorded on the testnet blockchain). There are no Algos physically "in" your wallet. Note that you need to look at the testnet and not the mainnet to see the Algos controlled by your wallet.
+10. After some time, the wallet will show the new balance of 10 Algos.
+11. Transfer 5 Algos from your account to my account address. My account address is
+```
+K2EP3LIPR3KEI7QOVW3UHLN6JGASMF442YRI5IPO6N6UWPUVNZJ6BVFT4U
+```
+NOTE: These are testnet Algos and not real Algos. We cannot exchange them for anything of value.
+
+12. Also, keep a copy of the transaction ID.
+In a recent transaction, my transaction ID was 4CTARWVWGPBL6G4GOKBIQQLKH5NOHOGV3EVF5XMFQGIGUA72HN6Q.
+
+Next, we want to visit the Algorand blockchain using API's. There are two API's available. One is the Algorand Node V2 and the other is the Algorand Indexer V2.
+
+13. In an IntelliJ project, right click the Project node and select New HTTP Request.
+We can enter our HTTP request directly into IntelliJ. For example, to view the details of the genesis block on the Algorand testnet, enter the following HTTP request and click the green triangle just to the left of the request:
+
+```
+###
+GET https://node.testnet.algoexplorerapi.io/genesis
+
+```
+14. Note that you may directly post curl requests into the IntelliJ HTTP client and it will convert the request into IntelliJ's format.
+
+15. Visit the URL https://testnet.algoexplorer.io/api-dev/indexer-v2 and note the base URL.
+The base URL is https://algoindexer.testnet.algoexplorerapi.io/.
+
+16. Using IntelliJ, create two HTTP requests to visit the testnet blockchain and get the details associated with both of the transfer transactions. The first will show the transation details when you took funds from the dispenser. The second will show the transaction details when you sent 5 Algos to me. To do this, you will need to use the Algorand Indexer V2 API.
+
+Using the IntelliJ HTTP client, copy (or take a screenshot) of the HTTP requests and the HTTP responses (including JSON). Include the two request/response pairs on your PDF.
+
+:checkered_flag:**On your single pdf, make a copy of the screenshots labelled clearly as Project3Task2.**
+
+**Task 2 Grading Rubric 20 Points**
+
+Rubric:
+1. The IntelliJ HTTP client is being used correctly. 5 points.
+2. The HTTP client resquest is correct. 5 Points.
+3. The HTTP client response is correct: 5 Points.
+4. The correct transactions are shown on the PDF: 5 points.
 
 
 :checkered_flag:**Place your two submission documents (Lab3PartA.doc or Lab3PartA.pdf and Lab3PartB.doc or Lab3PartB.pdf) into a single directory and zip that directory. Name the zip file \<YourAndrewID\>Lab3.zip. Submit this single zip file to Canvas.**
