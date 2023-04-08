@@ -452,33 +452,36 @@ The base URL is https://algoindexer.testnet.algoexplorerapi.io/.
 
 ##### Three Points for successful completion of Part A
 
-include a screen shot of Ganache accounts from question 12
+include a screen shot of Ganache accounts from question 12  
 
-include a screen shot of the four wallets from question 14
+include a screen shot of the four wallets from question 14  
 
-include a screen shot of the three wallets from question 17
+include a screen shot of the three wallets from question 17  
 
-include a screen shot of Charlie's wallet after question 18.
+include a screen shot of Charlie's wallet after question 18  
 
-include a screen shot of Ganache accounts from question 19.
+include a screen shot of Ganache accounts from question 19  
+
 
 ##### Three Points for successful completion of Part B     
 
-include a receipt from question 8
+include a receipt from question 8  
 
-include a description of "from:"" and "to:"" in question 9.
+include a description of "from:"" and "to:"" in question 9  
 
-include a receipt from question 22
+include a receipt from question 22  
 
-include a receipt from question 28  
+include a receipt from question 28   
 
 ##### Three Points for successful completion of Part C    
 
 include getDispenserTransaction.js
-include the output of getDispenserTransaction.js
 
-include getTransferTransaction.js
-include the output of getTransferTransaction.js
+include the output of getDispenserTransaction.js  
+
+include getTransferTransaction.js  
+include the output of getTransferTransaction.js  
+
 
 ##### One Point for overall presentation
 
