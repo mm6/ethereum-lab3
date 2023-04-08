@@ -387,7 +387,7 @@ NOTE: These are testnet Algos and not real Algos. We cannot exchange them for an
 12. Also, keep a copy of the transaction ID.
 In a recent transaction, my transaction ID was 4CTARWVWGPBL6G4GOKBIQQLKH5NOHOGV3EVF5XMFQGIGUA72HN6Q.
 
-Next, we want to visit the Algorand blockchain using API's. "API" stands for Application Programmer Interface. There are two API's available. One is the Algorand Node V2 and the other is the Algorand Indexer V2.
+Next, we want to visit the Algorand blockchain using API's. "API" stands for Application Programmer Interface. There are two API's available. One is the Algorand Node V2 and the other is the Algorand Indexer V2. We will use the Algorand Indexer V2 API.
 
 13. First, we will view the details of the genesis block on the Algorand testnet, we need to generate the following HTTP request and send it to the Algorand explorer API.
 
@@ -440,12 +440,9 @@ node getGenesisBlock.js
 14. Visit the URL https://testnet.algoexplorer.io/api-dev/indexer-v2 and note the base URL.
 The base URL is https://algoindexer.testnet.algoexplorerapi.io/.
 
-15. Browse the API's. Create a new Javascript program (based on getGenesisBlock.js) named getDispenserTransaction.js. This program will create an HTTP request to visit the testnet
-blockchain and get the details associated with the transaction that took funds from the dispenser.
-Run this program and paste the program and its output to the pdf.
+15. Browse the API's and experiment with some API calls. Create a new Javascript program (based on getGenesisBlock.js) named getDispenserTransaction.js. This program will create an HTTP request to visit the testnet blockchain and get the details associated with the transaction that you sent to extract funds from the dispenser. Run this program and paste the program and its output to the pdf.
 
-16. Browse the Algorand Indexer V2 API. Create a new Javascript program (based on getGenesisBlock.js) named getTransferTransaction.js. This program will show the transaction details when you sent 5 Algos to me.
-Run this program and paste the program and its output to the pdf.
+16. Create a new Javascript program (based on getGenesisBlock.js) named getTransferTransaction.js. This program will show the transaction details when you sent 5 Algos to me. Run this program and paste the program and its output to the pdf.
 
 :checkered_flag:**To receive credit for Part C, submit a document named Lab3PartC.pdf containing clearly labelled sections that include: getDispenserTransaction.js and its output and getTransferTransaction.js and its output.**
 
@@ -478,7 +475,7 @@ include a receipt from question 28
 ##### Three Points for successful completion of Part C    
 
 include getDispenserTransaction.js
-inlcude the output of getDispenserTransaction.js
+include the output of getDispenserTransaction.js
 
 include getTransferTransaction.js
 include the output of getTransferTransaction.js
