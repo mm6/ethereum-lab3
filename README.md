@@ -392,9 +392,13 @@ Next, we want to visit the Algorand blockchain using API's. "API" stands for App
 13. First, we will view the details of the genesis block on the Algorand testnet, we need to generate the following HTTP request and send it to the Algorand explorer API.
 
 ```
-HTPS GET https://node.testnet.algoexplorerapi.io/genesis
+HTTPS GET https://node.testnet.algoexplorerapi.io/genesis
 
 ```
+
+There are several ways to make this HTTP request - using various tools. Here, we will make this
+request using a program written in Javascript. You could also make the same request using
+Python, curl, or Postman.
 
 Create a file in a new directory and name the file "getGenesisBlock.js". The contents of the
 file is a small Javascript program shown next.
