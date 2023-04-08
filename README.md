@@ -12,7 +12,7 @@
 **Learning Objectives:** The object of Part A is to introduce the student to the MetaMask wallet and crowdsale contracts. The objective of Part B is to introduce the student to debugging smart contracts using the truffle debugger. The objective of Part C is to experiment with the Algorand Testnet.
 
 
-### Part A Set Up
+### Part A. Using the Remix web IDE and the MetaMask wallet
 
 1. In Lab 1, you installed Ganache and you will be using it again here. Run Ganache Quickstart and leave it running for the remainder of Part A. This is, essentially, a client server application. Ganache is the server and is used to hold a single instance blockchain. We will visit the server with two clients - the Remix application running in a browser and a MetaMask wallet, also running in a browser.
 
@@ -89,7 +89,9 @@ wallet (ETH and CMUC balances) after buying these additional (and more expensive
 :checkered_flag:**To receive credit for Part A, submit a document named Lab3PartA.pdf containing clearly labelled sections that include: a screen shot of Ganache accounts from question 12, a screen shot of the four wallets from question 14, a screen shot of the three wallets from question 17, a screen shot of Charlie's wallet after question 18, and a screenshot of the accounts from Ganache described in question 19.**
 
 
-### Part B of this lab is modified from the tutorial found here:
+### Part B. Debugging smart contracts using the Truffle suite
+
+These instructions are modified from the tutorial found here:
 
 ```
 https://trufflesuite.com/guides/debugging-an-example-smart-contract/
@@ -359,7 +361,7 @@ truffle(develop)> debug <transaction hash>
 :checkered_flag:**To receive credit for Part B, submit a document named Lab3PartB.pdf containing clearly labelled sections that include: the question 8 receipt and the answer to question 9, the question 22 receipt, and the question 28 receipt.**
 
 
-### Part C Calling Algorand's Testnet API.
+### Part C. Using an Algorand wallet and calling the Algorand's Testnet API.
 
 Algorand is a blockchain that competes with Ethereum.
 
