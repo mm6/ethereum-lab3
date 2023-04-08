@@ -98,7 +98,7 @@ https://trufflesuite.com/guides/debugging-an-example-smart-contract/
 
 There are three distinct places in these directions where you need to
 paste a copy of your transaction receipt to a submission file named
-Lab3PartB.doc or Lab3PartB.pdf.
+Lab3PartB.pdf.
 
 1. Make a new directory named debugging-exercise and cd into it.
 
