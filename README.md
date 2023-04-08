@@ -92,7 +92,8 @@ wallet (ETH and CMUC balances) after buying these additional (and more expensive
 ### Part B of this lab is modified from the tutorial found here:
 
 ```
-https://truffleframework.com/tutorials/debugging-a-smart-contract
+https://trufflesuite.com/guides/debugging-an-example-smart-contract/
+
 ```
 
 There are three distinct places in these directions where you need to
