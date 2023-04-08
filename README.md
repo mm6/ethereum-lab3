@@ -359,7 +359,7 @@ truffle(develop)> debug <transaction hash>
 
 ### Part C Calling Algorand's Testnet API.
 
-Algorand is a Web3 blockchain that competes with Ethereum.
+Algorand is a blockchain that competes with Ethereum.
 
 To get started using Algorand, we need an Algorand wallet and an account.  
 
