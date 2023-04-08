@@ -86,7 +86,7 @@ wallet (ETH and CMUC balances) after buying these additional (and more expensive
 
 19. Show a screen shot of the four accounts from Ganache. This screen shot will show the final balances in ETH of Alice, Bob, Charlie, and Donna.
 
-:checkered_flag:**To receive credit for Part A, submit a document named Lab3PartA.doc or Lab3PartA.pdf containing a screen shot of Ganache accounts from question 12, a screen shot of the four wallets from question 14, a screen shot of the three wallets from question 17, a screen shot of Charlie's wallet after question 18, and a screenshot of the accounts from Ganache described in question 19.**
+:checkered_flag:**To receive credit for Part A, submit a document named Lab3PartA.pdf containing clearly labelled sections that include: a screen shot of Ganache accounts from question 12, a screen shot of the four wallets from question 14, a screen shot of the three wallets from question 17, a screen shot of Charlie's wallet after question 18, and a screenshot of the accounts from Ganache described in question 19.**
 
 
 ### Part B of this lab is modified from the tutorial found here:
@@ -355,7 +355,8 @@ truffle(develop)> debug <transaction hash>
 ```
 31. Use 'n' and 'v' to step through the transaction and view variables. You can see that the Odd event is generated when it should be Even.
 
-:checkered_flag:**To receive credit for Part B, submit a document named Lab3PartB.doc or Lab3PartB.pdf containing the question 8 receipt and the answer to question 9, the question 22 receipt, and the question 28 receipt.**
+:checkered_flag:**To receive credit for Part B, submit a document named Lab3PartB.pdf containing clearly labelled sections that include: the question 8 receipt and the answer to question 9, the question 22 receipt, and the question 28 receipt.**
+
 
 ### Part C Calling Algorand's Testnet API.
 
@@ -383,61 +384,97 @@ NOTE: These are testnet Algos and not real Algos. We cannot exchange them for an
 12. Also, keep a copy of the transaction ID.
 In a recent transaction, my transaction ID was 4CTARWVWGPBL6G4GOKBIQQLKH5NOHOGV3EVF5XMFQGIGUA72HN6Q.
 
-Next, we want to visit the Algorand blockchain using API's. There are two API's available. One is the Algorand Node V2 and the other is the Algorand Indexer V2.
+Next, we want to visit the Algorand blockchain using API's. "API" stands for Application Programmer Interface. There are two API's available. One is the Algorand Node V2 and the other is the Algorand Indexer V2.
 
-13. In an IntelliJ project, right click the Project node and select New HTTP Request.
-We can enter our HTTP request directly into IntelliJ. For example, to view the details of the genesis block on the Algorand testnet, enter the following HTTP request and click the green triangle just to the left of the request:
-
-```
-###
-GET https://node.testnet.algoexplorerapi.io/genesis
+13. First, we will view the details of the genesis block on the Algorand testnet, we need to generate the following HTTP request and send it to the Algorand explorer API.
 
 ```
-14. Note that you may directly post curl requests into the IntelliJ HTTP client and it will convert the request into IntelliJ's format.
+HTPS GET https://node.testnet.algoexplorerapi.io/genesis
 
-15. Visit the URL https://testnet.algoexplorer.io/api-dev/indexer-v2 and note the base URL.
+```
+
+Create a file in a new directory and name the file "getGenesisBlock.js". The contents of the
+file is a small Javascript program shown next.
+
+```
+/*  Read the genesis block on the Algorand Testnet
+    Modified from:
+    https://blog.logrocket.com/5-ways-to-make-http-requests-in-node-js/
+*/
+const https = require('https');
+
+https.get('https://node.testnet.algoexplorerapi.io/genesis', res => {
+  let data = [];
+  const headerDate = res.headers && res.headers.date ? res.headers.date :
+'no response date';
+  console.log('Status Code:', res.statusCode);
+  console.log('Date in Response header:', headerDate);
+
+  res.on('data', chunk => {
+    data.push(chunk);
+  });
+
+  res.on('end', () => {
+    console.log('Response ended: ');
+    const dataFromBlock = JSON.parse(Buffer.concat(data).toString());
+    console.log(dataFromBlock);
+  });
+}).on('error', err => {
+  console.log('Error: ', err.message);
+});
+
+```
+Run this program by entering the following command at the command line:
+
+```
+node getGenesisBlock.js
+```
+
+14. Visit the URL https://testnet.algoexplorer.io/api-dev/indexer-v2 and note the base URL.
 The base URL is https://algoindexer.testnet.algoexplorerapi.io/.
 
-16. Using IntelliJ, create two HTTP requests to visit the testnet blockchain and get the details associated with both of the transfer transactions. The first will show the transation details when you took funds from the dispenser. The second will show the transaction details when you sent 5 Algos to me. To do this, you will need to use the Algorand Indexer V2 API.
+15. Browse the API's. Create a new Javascript program (based on getGenesisBlock.js) named getDispenserTransaction.js. This program will create an HTTP request to visit the testnet
+blockchain and get the details associated with the transaction that took funds from the dispenser.
+Run this program and paste the program and its output to the pdf.
 
-Using the IntelliJ HTTP client, copy (or take a screenshot) of the HTTP requests and the HTTP responses (including JSON). Include the two request/response pairs on your PDF.
+16. Browse the Algorand Indexer V2 API. Create a new Javascript program (based on getGenesisBlock.js) named getTransferTransaction.js. This program will show the transaction details when you sent 5 Algos to me.
+Run this program and paste the program and its output to the pdf.
 
-:checkered_flag:**On your single pdf, make a copy of the screenshots labelled clearly as Project3Task2.**
+:checkered_flag:**To receive credit for Part C, submit a document named Lab3PartC.pdf containing clearly labelled sections that include: getDispenserTransaction.js and its output and getTransferTransaction.js and its output.**
 
-**Task 2 Grading Rubric 20 Points**
-
-Rubric:
-1. The IntelliJ HTTP client is being used correctly. 5 points.
-2. The HTTP client resquest is correct. 5 Points.
-3. The HTTP client response is correct: 5 Points.
-4. The correct transactions are shown on the PDF: 5 points.
-
-
-:checkered_flag:**Place your two submission documents (Lab3PartA.doc or Lab3PartA.pdf and Lab3PartB.doc or Lab3PartB.pdf) into a single directory and zip that directory. Name the zip file \<YourAndrewID\>Lab3.zip. Submit this single zip file to Canvas.**
+:checkered_flag:**Place your three submission documents (Lab3PartA.pdf, Lab3PartB.pdf, and Lab3PartC.pdf) into a single directory and zip that directory. Name the zip file \<YourAndrewID\>Lab3.zip. Submit this single zip file to Canvas.**
 
 ##### Grading rubric for the materials in the submission directory
 
-##### Five Points for successful completion of Part A
+##### Three Points for successful completion of Part A
 
-+1 point for a screen shot of Ganache accounts from question 12
+include a screen shot of Ganache accounts from question 12
 
-+1 point for a screen shot of the four wallets from question 14
+include a screen shot of the four wallets from question 14
 
-+1 point for a screen shot of the three wallets from question 17
+include a screen shot of the three wallets from question 17
 
-+1 points for a screen shot of Charlie's wallet after question 18.
+include a screen shot of Charlie's wallet after question 18.
 
-+1 point for a screen shot of Ganache accounts from question 19.
+include a screen shot of Ganache accounts from question 19.
 
-##### Four Points for successful completion of Part B     
+##### Three Points for successful completion of Part B     
 
-+1 point for a receipt from question 8
+include a receipt from question 8
 
-+1 point for description of "from:"" and "to:"" in question 9.
+include a description of "from:"" and "to:"" in question 9.
 
-+1 point for a receipt from question 22
+include a receipt from question 22
 
-+1 points for a receipt from question 28  
+include a receipt from question 28  
+
+##### Three Points for successful completion of Part C    
+
+include getDispenserTransaction.js
+inlcude the output of getDispenserTransaction.js
+
+include getTransferTransaction.js
+include the output of getTransferTransaction.js
 
 ##### One Point for overall presentation
 
