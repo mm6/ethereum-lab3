@@ -18,7 +18,9 @@
 
 [Encrypt may be found here](https://www.myetherwallet.com/wallet/create)
 
-Select Install Enkrypt Browser Extension.
+Select Install Enkrypt Browser Extension.  
+
+You will need to keep a copy of the word list so that you can regenerate your private keys.  
 
 These are my notes when installing Enkrypt and connecting to Ganache:
 
