@@ -22,15 +22,19 @@ Select Install Enkrypt Browser Extension.
 
 These are my notes when installing Enkrypt and connecting to Ganache:
 
-a. Choose Manage Networks at the bottom left of the wallet.
-b. Click the icon to the right of the search bar.
-c. Click Custom Network.
-d. Use these setting:
+a. Choose Manage Networks at the bottom left of the wallet.  
 
+b. Click the icon to the right of the search bar.  
+
+c. Click Custom Network.  
+
+d. Use these setting:  
+
+```
 Network Name:   Ganache
 New RPC URL:    HTTP://0.0.0.0:7545
 Chain ID:       5777
-
+```
 e. Under Manage Networks: Turn them all off except for Ganache.  
 
 f. Ganache should now display on your dashboard side menu.  
