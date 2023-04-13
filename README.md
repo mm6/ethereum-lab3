@@ -12,7 +12,7 @@
 
 1. In Lab 1, you installed Ganache and you will be using it again here. Run Ganache Quickstart and leave it running for the remainder of Part A. This is, essentially, a client server application. Ganache is the server and is used to hold a single instance blockchain. We will visit the server with two clients - the Remix application running in a browser and an Enkript wallet, also running in a browser. One of these tools, the Remix IDE, is useful for smart contract development and testing. The other of these tools, the Enkript wallet, is for everyday users to transfer tokens and cryptocurrencies.
 
-2. We will be using the Remix IDE to compile Solidity source code. We will also use Remix to deploy byte code to the Ethereum Virtual Machine (EVM) running on Ganache. Using Remix and Enkrypt, we will interact with the contract using JSON-RPC. Remix runs in your browser. You don't need to install it.
+2. We will be using the Remix IDE to compile Solidity source code. This smart contract code will implement a crowd sale contract. We will also use Remix to deploy byte code to the Ethereum Virtual Machine (EVM) running on Ganache. Using Remix and Enkrypt, we will interact with the contract using JSON-RPC. Remix runs in your browser. You don't need to install it.
 
 [Remix may be found here](https://remix.ethereum.org/)
 
@@ -191,7 +191,7 @@ The base URL is https://algoindexer.testnet.algoexplorerapi.io/. Compare the bas
 
 1. Include getDispenserTransaction.js.
 
-2. Include the output of getDispenserTransaction.js. 
+2. Include the output of getDispenserTransaction.js.
 
 3. Include getTransferTransaction.js.
 
