@@ -31,11 +31,16 @@ Network Name:   Ganache
 New RPC URL:    HTTP://0.0.0.0:7545
 Chain ID:       5777
 
-e. Under Manage Networks: Turn them all off except for Ganache.
-f. Ganache should now display on your dashboard side menu.
-g. Click the EVM Account drop down arrow.
-h. Select Import Account from another Wallet.
-i. We need to take private keys from Ganache and import them into the wallet.
+e. Under Manage Networks: Turn them all off except for Ganache.  
+
+f. Ganache should now display on your dashboard side menu.  
+
+g. Click the EVM Account drop down arrow.  
+
+h. Select Import Account from another Wallet.  
+
+i. We need to take private keys from Ganache and import them into the wallet.  
+
 j. Import the first account from Ganache into Enkrypt. In Ganache, you can view the key
 icon to the right of the public key of each account, click on the key icon and you can
 view the private key of the account. Copy the private key and use it for importing
