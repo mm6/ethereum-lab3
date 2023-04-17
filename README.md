@@ -8,6 +8,8 @@
 
 **Learning Objectives:** The object of Part A is to introduce the student to an Ethereum wallet (Enkrypt) and crowd sale contracts. The objective of Part B is to experiment with the Algorand Wallet and its Testnet API.
 
+**For full credit:** Complete either Part A or Part B. You need not complete both.
+
 ### Part A. Using the Remix web IDE and the Enkrypt wallet
 
 1. In Lab 1, you installed Ganache and you will be using it again here. Run Ganache Quickstart and leave it running for the remainder of Part A. This is, essentially, a client server application. Ganache is the server and is used to hold a single instance blockchain. We will visit the server with two clients - the Remix application running in a browser and an Enkript wallet, also running in a browser. One of these tools, the Remix IDE, is useful for smart contract development and testing. The other of these tools, the Enkript wallet, is for everyday users to transfer tokens and cryptocurrencies.
