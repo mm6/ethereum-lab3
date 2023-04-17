@@ -19,12 +19,22 @@
 [Encrypt may be found here](https://www.myetherwallet.com/wallet/create)
 
 Using Google Chrome, select Install Enkrypt Browser Extension.
+
+### Notes on using the wallet:
+
 You will need to keep a copy of the word list so that you can regenerate your private keys.
+
+We only want one Enkrypt wallet installed on our computer. If you have installed more than
+one wallet, delete them both and install only one. The system becomes unstable with more
+than one wallet.
+
+If you restart Ganache, you may need to delete and re-install the wallet. Best to start with
+a fresh wallet and a fresh copy of Ganache.
 
 On Ganache, select the icon on the top right and just to the right of SWITCH. Choose
 Server and set HOSTNAME to All Interfaces. Select restart.
 
-These are my notes when installing Enkrypt on Chrome and connecting to Ganache:
+These are my notes when running Enkrypt on Chrome to connect to Ganache:
 
 a. Choose Manage Networks at the bottom left of the wallet.  
 
@@ -32,13 +42,14 @@ b. Click the icon to the right of the search bar.
 
 c. Click Custom Network.  
 
-d. Use these setting:  
+d. Use these setting (the name "Ganache" may change to "Geth Testnet", no worries):  
 
 ```
 Network Name:   Ganache
 New RPC URL:    HTTP://0.0.0.0:7545
 Chain ID:       5777
 ```
+
 e. Under Manage Networks: Turn them all off except for Ganache.  
 
 f. Ganache should now display on your dashboard side menu.  
