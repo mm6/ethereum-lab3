@@ -18,11 +18,13 @@
 
 [Encrypt may be found here](https://www.myetherwallet.com/wallet/create)
 
-Select Install Enkrypt Browser Extension.  
+Using Google Chrome, select Install Enkrypt Browser Extension.
+You will need to keep a copy of the word list so that you can regenerate your private keys.
 
-You will need to keep a copy of the word list so that you can regenerate your private keys.  
+On Ganache, select the icon on the top right and just to the right of SWITCH. Choose
+Server and set HOSTNAME to All Interfaces. Select restart.
 
-These are my notes when installing Enkrypt and connecting to Ganache:
+These are my notes when installing Enkrypt on Chrome and connecting to Ganache:
 
 a. Choose Manage Networks at the bottom left of the wallet.  
 
